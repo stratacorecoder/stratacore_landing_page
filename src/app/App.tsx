@@ -6,7 +6,6 @@ import { Benefits } from './components/Benefits';
 import { EnterpriseCTA } from './components/EnterpriseCTA';
 import { Navigation } from './components/Navigation';
 import { Contact } from './components/Contact';
-import { Footer } from './components/Footer';
 import bgImage from '../imports/bg_for_landingpage.png';
 
 export type Page = 'home' | 'contact';
@@ -62,19 +61,9 @@ export default function App() {
             <DashboardPreview />
             <Benefits />
             <EnterpriseCTA onContact={() => setPage('contact')} />
-            <Footer
-              onNavigateToSection={navigateToSection}
-              onContact={() => setPage('contact')}
-            />
           </>
         ) : (
-          <>
-            <Contact />
-            <Footer
-              onNavigateToSection={navigateToSection}
-              onContact={() => setPage('contact')}
-            />
-          </>
+          <Contact />
         )}
       </div>
     </>

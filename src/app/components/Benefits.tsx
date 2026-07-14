@@ -45,13 +45,16 @@ export function Benefits() {
 
           <StaggerReveal className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             {benefits.map((benefit) => (
-              <div key={benefit.title} className="stagger-item space-y-3 rounded-2xl border border-white/6 bg-white/[0.02] p-6">
-                <div className="flex size-11 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/10">
-                  <Check className="size-5 text-violet-300" strokeWidth={2.5} />
+              <div
+                key={benefit.title}
+                className="stagger-item space-y-3 rounded-2xl border border-violet-500/35 bg-[#09090B]/60 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-md transition-colors duration-300 hover:border-violet-400/50 hover:bg-[#09090B]/70"
+              >
+                <div className="flex size-11 items-center justify-center rounded-xl border border-violet-400/35 bg-violet-500/20">
+                  <Check className="size-5 text-violet-200" strokeWidth={2.5} />
                 </div>
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">{benefit.title}</h3>
-                  <p className="text-sm leading-relaxed text-white/60">{benefit.description}</p>
+                  <h3 className="text-lg font-semibold text-white">{benefit.title}</h3>
+                  <p className="text-sm leading-relaxed text-violet-100/70">{benefit.description}</p>
                 </div>
               </div>
             ))}

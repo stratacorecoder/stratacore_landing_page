@@ -6,9 +6,10 @@ export function EnterpriseCTA({ onContact }: { onContact: () => void }) {
     <section className="relative px-4 py-24 md:px-8 md:py-28 lg:px-12">
       <div className="mx-auto max-w-7xl">
         <ScrollReveal>
-          <div className="relative overflow-hidden rounded-3xl border border-violet-500/25 bg-gradient-to-br from-violet-600/15 via-[#09090B]/40 to-transparent p-10 md:p-16">
-            <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-violet-500/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-24 -left-24 size-72 rounded-full bg-violet-600/10 blur-3xl" />
+          <div className="relative overflow-hidden rounded-3xl border border-orange-500/40 bg-[#09090B]/70 p-10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-xl md:p-16">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-orange-600/20 via-orange-500/5 to-transparent" />
+            <div className="pointer-events-none absolute -right-24 -top-24 size-72 rounded-full bg-orange-500/25 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-24 -left-24 size-72 rounded-full bg-orange-600/15 blur-3xl" />
 
             <div className="relative mx-auto max-w-3xl space-y-8 text-center">
               <div className="space-y-5">
@@ -25,7 +26,7 @@ export function EnterpriseCTA({ onContact }: { onContact: () => void }) {
                 <button
                   type="button"
                   onClick={onContact}
-                  className="group flex items-center gap-3 rounded-full bg-violet-600 px-8 py-4 font-medium text-white shadow-xl shadow-violet-600/30 transition-all duration-300 hover:bg-violet-500 active:scale-[0.98]"
+                  className="group flex items-center gap-3 rounded-full bg-orange-600 px-8 py-4 font-medium text-white shadow-xl shadow-orange-600/30 transition-all duration-300 hover:bg-orange-500 active:scale-[0.98]"
                 >
                   Book Demo
                   <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
@@ -35,7 +36,7 @@ export function EnterpriseCTA({ onContact }: { onContact: () => void }) {
               <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-6 text-sm text-white/50">
                 {['Fast Deployment', 'Cloud or On-Premise', 'Built for Scale'].map((label) => (
                   <span key={label} className="flex items-center gap-2">
-                    <span className="size-1.5 rounded-full bg-violet-400" />
+                    <span className="size-1.5 rounded-full bg-orange-400" />
                     {label}
                   </span>
                 ))}

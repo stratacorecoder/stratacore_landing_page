@@ -67,24 +67,24 @@ function MiniChart({ chartRef }: { chartRef: RefObject<SVGSVGElement | null> }) 
           y1={H * t}
           x2={W}
           y2={H * t}
-          stroke="rgba(167,139,250,0.08)"
+          stroke="rgba(96,165,250,0.08)"
           strokeWidth={1}
         />
       ))}
-      <path d={k.area} fill="rgba(167,139,250,0.12)" className="chart-area-kwh" />
+      <path d={k.area} fill="rgba(96,165,250,0.12)" className="chart-area-kwh" />
       <path
         d={k.line}
         fill="none"
-        stroke="#a78bfa"
+        stroke="#60a5fa"
         strokeWidth={2}
         strokeLinejoin="round"
         className="chart-line-kwh"
       />
-      <path d={s.area} fill="rgba(124,58,237,0.12)" className="chart-area-sessions" />
+      <path d={s.area} fill="rgba(37,99,235,0.12)" className="chart-area-sessions" />
       <path
         d={s.line}
         fill="none"
-        stroke="#7c3aed"
+        stroke="#2563eb"
         strokeWidth={2}
         strokeLinejoin="round"
         className="chart-line-sessions"
@@ -93,14 +93,14 @@ function MiniChart({ chartRef }: { chartRef: RefObject<SVGSVGElement | null> }) 
         cx={W}
         cy={H - ((sessionsPoints[sessionsPoints.length - 1] - min) / (max - min)) * H}
         r={4}
-        fill="#7c3aed"
+        fill="#2563eb"
         className="chart-dot-sessions"
       />
       <circle
         cx={W}
         cy={H - ((kwhPoints[kwhPoints.length - 1] - min) / (max - min)) * H}
         r={4}
-        fill="#a78bfa"
+        fill="#60a5fa"
         className="chart-dot-kwh"
       />
     </svg>
@@ -116,7 +116,7 @@ function MobileScreen({
 }) {
   return (
     <div
-      className={`relative w-[148px] overflow-hidden rounded-[28px] border border-violet-500/20 bg-[#0D0D12] shadow-2xl shadow-violet-500/10 sm:w-[168px] ${className}`}
+      className={`relative w-[148px] overflow-hidden rounded-[28px] border border-blue-500/20 bg-[#0D0D12] shadow-2xl shadow-blue-500/10 sm:w-[168px] ${className}`}
       style={{ aspectRatio: '9/19' }}
     >
       <div className="flex items-center justify-between px-4 pt-3 pb-1">
@@ -187,15 +187,15 @@ export function DashboardPreview() {
 
         <ScrollReveal>
           <div className="relative mb-10">
-            <div className="pointer-events-none absolute -inset-24 bg-gradient-to-r from-violet-600/15 via-transparent to-transparent blur-3xl" />
+            <div className="pointer-events-none absolute -inset-24 bg-gradient-to-r from-blue-600/15 via-transparent to-transparent blur-3xl" />
 
-            <div className="relative rounded-3xl border border-violet-500/15 bg-gradient-to-br from-violet-950/25 via-[#09090B]/60 to-[#09090B]/80 p-5 backdrop-blur-xl md:p-8">
-              <div className="mb-8 flex flex-col gap-4 border-b border-violet-500/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="relative rounded-3xl border border-blue-500/15 bg-gradient-to-br from-blue-950/25 via-[#09090B]/60 to-[#09090B]/80 p-5 backdrop-blur-xl md:p-8">
+              <div className="mb-8 flex flex-col gap-4 border-b border-blue-500/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <h3 className="mb-1 text-2xl font-semibold">Network Overview</h3>
                   <p className="text-sm text-white/50">Real-time infrastructure monitoring</p>
                 </div>
-                <div className="rounded-xl border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-sm text-violet-200">
+                <div className="rounded-xl border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm text-blue-200">
                   Last 30 days
                 </div>
               </div>
@@ -209,34 +209,34 @@ export function DashboardPreview() {
                 ].map(({ icon: Icon, label, value, delta }) => (
                   <div
                     key={label}
-                    className="stagger-item rounded-2xl border border-violet-500/20 bg-gradient-to-br from-violet-500/12 to-violet-500/5 p-5"
+                    className="stagger-item rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/12 to-blue-500/5 p-5"
                   >
                     <div className="mb-4 flex items-start justify-between">
-                      <div className="flex size-11 items-center justify-center rounded-xl border border-violet-500/25 bg-violet-500/15">
-                        <Icon className="size-5 text-violet-300" strokeWidth={1.5} />
+                      <div className="flex size-11 items-center justify-center rounded-xl border border-blue-500/25 bg-blue-500/15">
+                        <Icon className="size-5 text-blue-300" strokeWidth={1.5} />
                       </div>
                       <span className="text-sm text-emerald-400">{delta}</span>
                     </div>
                     <div className="text-2xl font-semibold text-white md:text-3xl">{value}</div>
-                    <div className="mt-1 text-sm text-violet-200/70">{label}</div>
+                    <div className="mt-1 text-sm text-blue-200/70">{label}</div>
                   </div>
                 ))}
               </StaggerReveal>
 
               <div className="grid grid-cols-1 gap-5 xl:grid-cols-5">
-                <div className="rounded-2xl border border-violet-500/15 bg-violet-500/5 p-5 xl:col-span-3">
+                <div className="rounded-2xl border border-blue-500/15 bg-blue-500/5 p-5 xl:col-span-3">
                   <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <div className="text-sm font-medium text-white">Network Activity</div>
                       <div className="mt-0.5 text-xs text-white/40">Sessions and kWh delivered - Jan 2026</div>
                     </div>
                     <div className="flex items-center gap-4 text-xs">
-                      <span className="flex items-center gap-1.5 text-violet-300">
-                        <span className="inline-block size-2 rounded-full bg-violet-400" />
+                      <span className="flex items-center gap-1.5 text-blue-300">
+                        <span className="inline-block size-2 rounded-full bg-blue-400" />
                         Sessions
                       </span>
-                      <span className="flex items-center gap-1.5 text-violet-200">
-                        <span className="inline-block size-2 rounded-full bg-violet-300" />
+                      <span className="flex items-center gap-1.5 text-blue-200">
+                        <span className="inline-block size-2 rounded-full bg-blue-300" />
                         kWh
                       </span>
                     </div>
@@ -251,7 +251,7 @@ export function DashboardPreview() {
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-violet-500/15 bg-violet-500/5 p-5 xl:col-span-2">
+                <div className="rounded-2xl border border-blue-500/15 bg-blue-500/5 p-5 xl:col-span-2">
                   <div className="mb-5 flex items-center justify-between">
                     <div className="text-sm font-medium text-white">Site Status</div>
                     <div className="flex items-center gap-1.5 text-xs text-emerald-400">
@@ -264,7 +264,7 @@ export function DashboardPreview() {
                       <div key={site.name} className="flex items-center justify-between gap-3">
                         <div className="flex min-w-0 items-center gap-2.5">
                           {site.status === 'online' ? (
-                            <Wifi className="size-3.5 shrink-0 text-violet-300" />
+                            <Wifi className="size-3.5 shrink-0 text-blue-300" />
                           ) : (
                             <AlertCircle className="size-3.5 shrink-0 text-amber-400" />
                           )}
@@ -274,12 +274,12 @@ export function DashboardPreview() {
                           <div className="text-xs text-white/40">
                             {site.active}/{site.stations}
                           </div>
-                          <div className="text-xs text-violet-200">{site.utilization}%</div>
+                          <div className="text-xs text-blue-200">{site.utilization}%</div>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-5 flex items-center justify-between border-t border-violet-500/10 pt-4 text-xs text-white/30">
+                  <div className="mt-5 flex items-center justify-between border-t border-blue-500/10 pt-4 text-xs text-white/30">
                     <div className="flex items-center gap-1.5">
                       <Clock className="size-3" />
                       Updated 2 min ago
@@ -292,7 +292,7 @@ export function DashboardPreview() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="relative rounded-3xl border border-violet-500/15 bg-gradient-to-br from-violet-950/20 via-[#09090B]/50 to-[#09090B]/70 p-6 backdrop-blur-xl md:p-12">
+          <div className="relative rounded-3xl border border-blue-500/15 bg-gradient-to-br from-blue-950/20 via-[#09090B]/50 to-[#09090B]/70 p-6 backdrop-blur-xl md:p-12">
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="space-y-6">
                 <h3 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
@@ -309,8 +309,8 @@ export function DashboardPreview() {
                     'Real-time charging progress and cost',
                   ].map((item) => (
                     <div key={item} className="flex items-center gap-3">
-                      <div className="flex size-5 shrink-0 items-center justify-center rounded-full border border-violet-500/30 bg-violet-500/15">
-                        <span className="size-1.5 rounded-full bg-violet-300" />
+                      <div className="flex size-5 shrink-0 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/15">
+                        <span className="size-1.5 rounded-full bg-blue-300" />
                       </div>
                       <span className="text-sm text-white/60">{item}</span>
                     </div>
@@ -323,8 +323,8 @@ export function DashboardPreview() {
                   <div className="flex h-full flex-col px-3 pb-3">
                     <div className="mb-2 px-1 text-[9px] font-semibold text-white">Nearby Stations</div>
                     <div className="relative mb-2 overflow-hidden rounded-xl" style={{ height: '90px' }}>
-                      <div className="absolute inset-0 bg-gradient-to-br from-violet-950 to-[#0a0a12]" />
-                      <div className="absolute left-6 top-3 flex size-4 items-center justify-center rounded-full border-2 border-white bg-violet-500 shadow-lg shadow-violet-500/50">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-950 to-[#0a0a12]" />
+                      <div className="absolute left-6 top-3 flex size-4 items-center justify-center rounded-full border-2 border-white bg-blue-500 shadow-lg shadow-blue-500/50">
                         <Zap className="size-2 text-white" fill="white" />
                       </div>
                     </div>
@@ -334,7 +334,7 @@ export function DashboardPreview() {
                     ].map((s) => (
                       <div key={s.name} className="flex items-center justify-between border-b border-white/5 py-1.5 last:border-0">
                         <div className="flex items-center gap-1.5">
-                          <MapPin className="size-2.5 shrink-0 text-violet-300" />
+                          <MapPin className="size-2.5 shrink-0 text-blue-300" />
                           <div>
                             <div className="text-[8px] font-medium leading-none text-white">{s.name}</div>
                             <div className="mt-0.5 text-[7px] text-white/40">{s.dist}</div>
@@ -351,13 +351,13 @@ export function DashboardPreview() {
                     <div className="mb-3 self-start text-[9px] font-semibold text-white">Charging Session</div>
                     <div className="relative mb-3">
                       <svg className="h-24 w-24 -rotate-90" viewBox="0 0 80 80">
-                        <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(124,58,237,0.15)" strokeWidth="5" />
+                        <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(37,99,235,0.15)" strokeWidth="5" />
                         <circle
                           cx="40"
                           cy="40"
                           r="32"
                           fill="none"
-                          stroke="#7c3aed"
+                          stroke="#2563eb"
                           strokeWidth="5"
                           strokeLinecap="round"
                           strokeDasharray="201"
@@ -381,7 +381,7 @@ export function DashboardPreview() {
                 <MobileScreen className="mb-8 shrink-0">
                   <div className="flex h-full flex-col px-3 pb-3">
                     <div className="mb-2 px-1 text-[9px] font-semibold text-white">Station Detail</div>
-                    <div className="mb-2 rounded-xl border border-violet-500/20 bg-violet-500/10 p-2.5">
+                    <div className="mb-2 rounded-xl border border-blue-500/20 bg-blue-500/10 p-2.5">
                       <div className="text-[8px] font-semibold text-white">Westfield Mall</div>
                       <div className="text-[7px] text-white/40">0.8 mi, Open 24h</div>
                       <div className="mt-1 flex items-center gap-1">
@@ -391,7 +391,7 @@ export function DashboardPreview() {
                     </div>
                     <button
                       type="button"
-                      className="mt-auto w-full rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 py-1.5 text-[8px] font-semibold text-white"
+                      className="mt-auto w-full rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 py-1.5 text-[8px] font-semibold text-white"
                     >
                       Start Charging
                     </button>

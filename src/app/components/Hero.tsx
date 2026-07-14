@@ -21,7 +21,6 @@ export function Hero({ onExplore }: { onExplore: () => void }) {
         .from('.hero-headline', { opacity: 0, y: 44, duration: 0.85 }, '-=0.25')
         .from('.hero-subtext', { opacity: 0, y: 24, duration: 0.65 }, '-=0.45')
         .from('.hero-cta', { opacity: 0, y: 20, duration: 0.55 }, '-=0.35')
-        .from('.hero-glow', { opacity: 0, scale: 0.92, duration: 1.1 }, '-=0.7')
         .from('.hero-capabilities', { opacity: 0, y: 16, duration: 0.6 }, '-=0.4');
     },
     { scope: containerRef, dependencies: [reduced] },
@@ -42,11 +41,9 @@ export function Hero({ onExplore }: { onExplore: () => void }) {
         >
           <source src={heroVideo} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#09090B]/90 via-[#09090B]/65 to-[#09090B]/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/55 via-transparent to-[#09090B]/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#09090B]/75 via-[#09090B]/35 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-[#09090B]/25" />
       </div>
-
-      <div className="hero-glow pointer-events-none absolute -right-32 top-1/4 size-[520px] rounded-full bg-violet-600/20 blur-[120px]" />
 
       <div className="relative flex min-h-[100dvh] w-full flex-1 flex-col">
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 pb-6 pt-24 md:px-8 lg:px-12">
