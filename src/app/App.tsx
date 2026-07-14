@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useLayoutEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
 import { DashboardPreview } from './components/DashboardPreview';
@@ -7,31 +7,44 @@ import { EnterpriseCTA } from './components/EnterpriseCTA';
 import { Navigation } from './components/Navigation';
 import { Contact } from './components/Contact';
 import bgImage from '../imports/bg_for_landingpage.png';
+import {
+  isSectionId,
+  waitForSectionAndScroll,
+} from './utils/scrollToSection';
 
 export type Page = 'home' | 'contact';
 
 export default function App() {
   const [page, setPage] = useState<Page>('home');
   const [scrollTarget, setScrollTarget] = useState<string | null>(null);
+  const scrollRequestRef = useRef(0);
 
-  useEffect(() => {
-    if (scrollTarget && page === 'home') {
-      const timer = setTimeout(() => {
-        document.getElementById(scrollTarget)?.scrollIntoView({ behavior: 'smooth' });
+  const navigateToSection = useCallback((sectionId: string) => {
+    scrollRequestRef.current += 1;
+    setPage('home');
+    setScrollTarget(sectionId);
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!scrollTarget || page !== 'home') return;
+
+    const target = scrollTarget;
+    const requestId = scrollRequestRef.current;
+
+    waitForSectionAndScroll(target, () => {
+      if (requestId === scrollRequestRef.current) {
         setScrollTarget(null);
-      }, 80);
-      return () => clearTimeout(timer);
-    }
+      }
+    });
   }, [page, scrollTarget]);
 
-  const navigateToSection = (sectionId: string) => {
-    if (page !== 'home') {
-      setPage('home');
-      setScrollTarget(sectionId);
-    } else {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (!isSectionId(hash)) return;
+
+    setPage('home');
+    setScrollTarget(hash);
+  }, []);
 
   return (
     <>
@@ -47,7 +60,7 @@ export default function App() {
         </div>
       )}
 
-      <div className="relative z-10 min-h-screen text-white">
+      <div className="relative z-10 min-h-screen w-full overflow-x-clip text-white">
         <Navigation
           page={page}
           onNavigate={setPage}
@@ -56,7 +69,7 @@ export default function App() {
 
         {page === 'home' ? (
           <>
-            <Hero onExplore={() => navigateToSection('features')} />
+            <Hero />
             <Features />
             <DashboardPreview />
             <Benefits />

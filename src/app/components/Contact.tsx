@@ -23,7 +23,7 @@ export function Contact() {
   );
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-[100dvh] w-full flex-col">
+    <section ref={sectionRef} className="relative flex min-h-[100dvh] w-full max-w-full flex-col overflow-x-clip">
       <div className="pointer-events-none fixed inset-0 z-0">
         <img
           src={contactBg}
@@ -34,14 +34,14 @@ export function Contact() {
         <div className="absolute inset-0 bg-[#05030F]/75" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-20 pt-28 md:px-8">
-        <div className="mx-auto w-full max-w-5xl space-y-12">
-          <div className="space-y-5 text-center">
-            <h1 className="contact-heading text-4xl font-bold leading-tight tracking-tight md:text-6xl">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 md:px-8">
+        <div className="mx-auto w-full max-w-5xl space-y-8 sm:space-y-12">
+          <div className="space-y-4 text-center sm:space-y-5">
+            <h1 className="contact-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-6xl">
               Let&apos;s build the future
               <span className="mt-1 block text-violet-400">of EV charging together</span>
             </h1>
-            <p className="contact-subtext mx-auto max-w-xl text-lg text-white/50">
+            <p className="contact-subtext mx-auto max-w-xl text-base text-white/50 sm:text-lg">
               Have questions or ready to get started? Our team can help you power smarter,
               scale faster, and go further.
             </p>

@@ -21,11 +21,11 @@ import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const networkSites = [
-  { name: 'BGC Hub - Taguig City', stations: 48, active: 46, utilization: 96, status: 'online' },
-  { name: 'NAIA Terminal 3 - Pasay', stations: 32, active: 31, utilization: 97, status: 'online' },
-  { name: 'SM Mall of Asia - Pasay', stations: 24, active: 21, utilization: 88, status: 'online' },
-  { name: 'Ayala Center - Cebu City', stations: 16, active: 12, utilization: 75, status: 'warning' },
-  { name: 'Abreeza Mall - Davao City', stations: 20, active: 19, utilization: 91, status: 'online' },
+  { name: 'Establishment 01', stations: 48, active: 46, utilization: 96, status: 'online' },
+  { name: 'MALL 01', stations: 32, active: 31, utilization: 97, status: 'online' },
+  { name: 'Commercial Site 01', stations: 24, active: 21, utilization: 88, status: 'online' },
+  { name: 'Commercial Site 02', stations: 16, active: 12, utilization: 75, status: 'warning' },
+  { name: 'Shopping Center', stations: 20, active: 19, utilization: 91, status: 'online' },
 ];
 
 const sessionsPoints = [310, 285, 420, 468, 445, 560, 524, 612, 655, 598, 720];
@@ -173,26 +173,26 @@ export function DashboardPreview() {
     <section
       ref={sectionRef}
       id="solutions"
-      className="relative px-4 py-24 md:px-8 md:py-28 lg:px-12"
+      className="relative overflow-x-clip px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-28 lg:px-12"
     >
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal className="mb-14 max-w-3xl space-y-4">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
+        <ScrollReveal className="mb-10 max-w-3xl space-y-3 sm:mb-14 sm:space-y-4">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl md:text-5xl">
             Unified dashboard for complete control
           </h2>
-          <p className="text-lg text-white/50 md:text-xl">
+          <p className="text-base text-white/50 sm:text-lg md:text-xl">
             Monitor, manage, and optimize your entire network from a single interface.
           </p>
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="relative mb-10">
-            <div className="pointer-events-none absolute -inset-24 bg-gradient-to-r from-blue-600/15 via-transparent to-transparent blur-3xl" />
+          <div className="relative mb-8 overflow-hidden sm:mb-10">
+            <div className="pointer-events-none absolute -inset-12 bg-gradient-to-r from-blue-600/15 via-transparent to-transparent blur-3xl sm:-inset-24" />
 
-            <div className="relative rounded-3xl border border-blue-500/15 bg-gradient-to-br from-blue-950/25 via-[#09090B]/60 to-[#09090B]/80 p-5 backdrop-blur-xl md:p-8">
-              <div className="mb-8 flex flex-col gap-4 border-b border-blue-500/10 pb-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="relative rounded-2xl border border-blue-500/15 bg-gradient-to-br from-blue-950/25 via-[#09090B]/60 to-[#09090B]/80 p-4 backdrop-blur-xl sm:rounded-3xl sm:p-5 md:p-8">
+              <div className="mb-6 flex flex-col gap-3 border-b border-blue-500/10 pb-5 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-6">
                 <div>
-                  <h3 className="mb-1 text-2xl font-semibold">Network Overview</h3>
+                  <h3 className="mb-1 text-xl font-semibold sm:text-2xl">Network Overview</h3>
                   <p className="text-sm text-white/50">Real-time infrastructure monitoring</p>
                 </div>
                 <div className="rounded-xl border border-blue-500/20 bg-blue-500/10 px-4 py-2 text-sm text-blue-200">
@@ -200,7 +200,7 @@ export function DashboardPreview() {
                 </div>
               </div>
 
-              <StaggerReveal className="mb-7 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+              <StaggerReveal className="mb-5 grid grid-cols-1 gap-3 sm:mb-7 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
                 {[
                   { icon: Activity, label: 'Active Stations', value: '1,247', delta: '+12%' },
                   { icon: Battery, label: 'Avg. Utilization', value: '89.4%', delta: '+8%' },
@@ -209,7 +209,7 @@ export function DashboardPreview() {
                 ].map(({ icon: Icon, label, value, delta }) => (
                   <div
                     key={label}
-                    className="stagger-item rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/12 to-blue-500/5 p-5"
+                    className="stagger-item rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-500/12 to-blue-500/5 p-4 sm:p-5"
                   >
                     <div className="mb-4 flex items-start justify-between">
                       <div className="flex size-11 items-center justify-center rounded-xl border border-blue-500/25 bg-blue-500/15">
@@ -217,14 +217,14 @@ export function DashboardPreview() {
                       </div>
                       <span className="text-sm text-emerald-400">{delta}</span>
                     </div>
-                    <div className="text-2xl font-semibold text-white md:text-3xl">{value}</div>
+                    <div className="text-xl font-semibold text-white sm:text-2xl md:text-3xl">{value}</div>
                     <div className="mt-1 text-sm text-blue-200/70">{label}</div>
                   </div>
                 ))}
               </StaggerReveal>
 
-              <div className="grid grid-cols-1 gap-5 xl:grid-cols-5">
-                <div className="rounded-2xl border border-blue-500/15 bg-blue-500/5 p-5 xl:col-span-3">
+              <div className="grid grid-cols-1 gap-4 sm:gap-5 xl:grid-cols-5">
+                <div className="rounded-2xl border border-blue-500/15 bg-blue-500/5 p-4 sm:p-5 xl:col-span-3">
                   <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                       <div className="text-sm font-medium text-white">Network Activity</div>
@@ -242,16 +242,19 @@ export function DashboardPreview() {
                     </div>
                   </div>
                   <MiniChart chartRef={chartRef} />
-                  <div className="mt-2 flex justify-between">
-                    {['Jan 1', 'Jan 7', 'Jan 13', 'Jan 19', 'Jan 25', 'Jan 31'].map((l) => (
-                      <span key={l} className="text-[10px] text-white/30">
+                  <div className="mt-2 flex justify-between gap-1">
+                    {['Jan 1', 'Jan 7', 'Jan 13', 'Jan 19', 'Jan 25', 'Jan 31'].map((l, i) => (
+                      <span
+                        key={l}
+                        className={`text-[9px] text-white/30 sm:text-[10px] ${i % 2 === 1 ? 'hidden sm:inline' : ''}`}
+                      >
                         {l}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-blue-500/15 bg-blue-500/5 p-5 xl:col-span-2">
+                <div className="rounded-2xl border border-blue-500/15 bg-blue-500/5 p-4 sm:p-5 xl:col-span-2">
                   <div className="mb-5 flex items-center justify-between">
                     <div className="text-sm font-medium text-white">Site Status</div>
                     <div className="flex items-center gap-1.5 text-xs text-emerald-400">
@@ -292,13 +295,13 @@ export function DashboardPreview() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="relative rounded-3xl border border-blue-500/15 bg-gradient-to-br from-blue-950/20 via-[#09090B]/50 to-[#09090B]/70 p-6 backdrop-blur-xl md:p-12">
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-              <div className="space-y-6">
-                <h3 className="text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
+          <div className="relative overflow-hidden rounded-2xl border border-blue-500/15 bg-gradient-to-br from-blue-950/20 via-[#09090B]/50 to-[#09090B]/70 p-5 backdrop-blur-xl sm:rounded-3xl sm:p-6 md:p-12">
+            <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl">
                   Seamless charging for every driver
                 </h3>
-                <p className="text-lg leading-relaxed text-white/50">
+                <p className="text-base leading-relaxed text-white/50 sm:text-lg">
                   Drivers get a full charging experience through any browser: find stations,
                   start sessions, and track energy in real time.
                 </p>
@@ -318,7 +321,7 @@ export function DashboardPreview() {
                 </div>
               </div>
 
-              <div className="flex items-end justify-center gap-4 overflow-x-auto pb-2">
+              <div className="-mx-1 flex items-end justify-start gap-3 overflow-x-auto pb-2 sm:mx-0 sm:justify-center sm:gap-4">
                 <MobileScreen className="mb-8 shrink-0">
                   <div className="flex h-full flex-col px-3 pb-3">
                     <div className="mb-2 px-1 text-[9px] font-semibold text-white">Nearby Stations</div>
