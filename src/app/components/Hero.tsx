@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { Play } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import heroBg from '../../imports/stratabg.gif';
+import heroBg from '../../imports/stratabg.webm';
 import { CapabilityStrip } from './CapabilityStrip';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
@@ -32,12 +32,15 @@ export function Hero() {
       className="relative flex min-h-[100dvh] w-full max-w-full flex-col overflow-hidden"
     >
       <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={heroBg}
-          alt=""
-          aria-hidden="true"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
           className="h-full w-full min-h-full min-w-full object-cover object-[70%_center] md:object-center"
-        />
+        >
+          <source src={heroBg} type="video/webm" />
+        </video>
         <div className="absolute inset-0 bg-[#09090B]/55 md:hidden" />
         <div className="absolute inset-0 hidden bg-gradient-to-r from-[#09090B]/75 via-[#09090B]/35 to-transparent md:block" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/45 via-transparent to-[#09090B]/20 md:from-transparent md:via-transparent md:to-[#09090B]/25" />
