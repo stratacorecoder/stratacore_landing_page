@@ -4,6 +4,7 @@ import { MapPin, Mail, Facebook } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { StaggerReveal } from './animations/ScrollReveal';
+import { SectionContainer } from './layout/SectionContainer';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 gsap.registerPlugin(useGSAP);
@@ -23,19 +24,22 @@ export function Contact() {
   );
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-[100dvh] w-full max-w-full flex-col overflow-x-clip">
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-dvh w-full min-w-0 flex-col overflow-x-clip pb-[env(safe-area-inset-bottom,0px)]"
+    >
       <div className="pointer-events-none fixed inset-0 z-0">
         <img
           src={contactBg}
           alt=""
-          className="h-full w-full object-cover object-center"
+          className="h-full w-full max-w-none object-cover object-center"
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-[#05030F]/75" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-28 md:px-8">
-        <div className="mx-auto w-full max-w-5xl space-y-8 sm:space-y-12">
+      <div className="relative z-10 flex min-w-0 flex-1 flex-col items-center justify-center pb-16 pt-nav sm:pb-20">
+        <SectionContainer className="max-w-5xl space-y-8 sm:space-y-12">
           <div className="space-y-4 text-center sm:space-y-5">
             <h1 className="contact-heading text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-6xl">
               Let&apos;s build the future
@@ -47,15 +51,15 @@ export function Contact() {
             </p>
           </div>
 
-          <StaggerReveal className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+          <StaggerReveal className="grid min-w-0 grid-cols-1 gap-5 lg:grid-cols-2">
             <div
-              className="stagger-item flex flex-col items-center space-y-5 rounded-3xl border border-violet-500/20 bg-violet-950/20 p-8 text-center backdrop-blur-xl"
+              className="stagger-item flex min-w-0 flex-col items-center space-y-5 rounded-3xl border border-violet-500/20 bg-violet-950/20 p-8 text-center backdrop-blur-xl"
               style={{ boxShadow: '0 0 40px rgba(124,58,237,0.12)' }}
             >
-              <div className="flex size-16 items-center justify-center rounded-2xl border border-violet-500/30 bg-violet-500/20">
+              <div className="flex size-16 shrink-0 items-center justify-center rounded-2xl border border-violet-500/30 bg-violet-500/20">
                 <Mail className="size-8 text-violet-300" strokeWidth={1.5} />
               </div>
-              <div className="space-y-2">
+              <div className="min-w-0 space-y-2">
                 <h3 className="text-xl font-semibold text-white">Get in Touch</h3>
                 <p className="text-sm leading-relaxed text-white/50">
                   Reach out through any channel below. We would love to hear from you.
@@ -65,19 +69,19 @@ export function Contact() {
                 href="https://www.facebook.com/profile.php?id=61591692530471"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex size-10 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/10 transition-colors hover:bg-violet-500/20"
+                className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/10 transition-colors hover:bg-violet-500/20"
               >
                 <Facebook className="size-5 text-violet-300" />
               </a>
             </div>
 
-            <div className="space-y-4">
+            <div className="min-w-0 space-y-4">
               <div className="stagger-item rounded-2xl border border-white/8 bg-white/[0.04] px-6 py-5 backdrop-blur-xl transition-colors hover:border-violet-500/25">
-                <div className="flex items-start gap-4">
+                <div className="flex min-w-0 items-start gap-4">
                   <div className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/15">
                     <MapPin className="size-5 text-violet-300" strokeWidth={1.5} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="mb-1 text-xs uppercase tracking-wider text-white/40">Address</div>
                     <p className="text-sm leading-relaxed text-white/80">
                       55 Cauayan Street Barangay Limmara,
@@ -91,15 +95,15 @@ export function Contact() {
               </div>
 
               <div className="stagger-item rounded-2xl border border-white/8 bg-white/[0.04] px-6 py-5 backdrop-blur-xl transition-colors hover:border-violet-500/25">
-                <div className="flex items-start gap-4">
+                <div className="flex min-w-0 items-start gap-4">
                   <div className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl border border-violet-500/20 bg-violet-500/15">
                     <Mail className="size-5 text-violet-300" strokeWidth={1.5} />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="mb-1 text-xs uppercase tracking-wider text-white/40">Email</div>
                     <a
                       href="mailto:stratacoreceo@gmail.com"
-                      className="text-sm text-white/80 transition-colors hover:text-violet-300"
+                      className="break-all text-sm text-white/80 transition-colors hover:text-violet-300"
                     >
                       stratacoreceo@gmail.com
                     </a>
@@ -108,7 +112,7 @@ export function Contact() {
               </div>
             </div>
           </StaggerReveal>
-        </div>
+        </SectionContainer>
       </div>
     </section>
   );

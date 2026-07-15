@@ -60,7 +60,7 @@ export default function App() {
         </div>
       )}
 
-      <div className="relative z-10 min-h-screen w-full overflow-x-clip text-white">
+      <div className="relative z-10 min-h-dvh w-full min-w-0 overflow-x-clip text-white">
         <Navigation
           page={page}
           onNavigate={setPage}

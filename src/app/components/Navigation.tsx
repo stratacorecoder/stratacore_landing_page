@@ -109,14 +109,14 @@ export function Navigation({ page, onNavigate, onNavigateToSection }: Navigation
       <div className="pointer-events-none fixed top-0 left-0 right-0 z-40 h-px bg-gradient-to-r from-transparent via-violet-500/35 to-transparent" />
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 border-b pt-[env(safe-area-inset-top,0px)] transition-all duration-300 ${
           scrolled
             ? 'border-white/10 bg-[#09090B]/90 shadow-lg shadow-violet-950/20 backdrop-blur-2xl'
             : 'border-white/[0.06] bg-[#09090B]/70 backdrop-blur-xl'
         }`}
         style={{ fontFamily: "'Sora', sans-serif" }}
       >
-        <div className="mx-auto flex h-16 w-full max-w-7xl min-w-0 items-center justify-between gap-3 px-4 md:h-[4.5rem] md:gap-4 md:px-8">
+        <div className="section-container mx-auto flex h-16 w-full min-w-0 max-w-7xl items-center justify-between gap-3 md:h-[4.5rem] md:gap-4">
           <button
             type="button"
             onClick={goHome}
@@ -180,7 +180,7 @@ export function Navigation({ page, onNavigate, onNavigateToSection }: Navigation
         </div>
 
         {mobileOpen && (
-          <div className="border-t border-white/10 bg-[#09090B]/95 px-4 py-4 backdrop-blur-2xl lg:hidden">
+          <div className="section-container border-t border-white/10 bg-[#09090B]/95 py-4 backdrop-blur-2xl lg:hidden">
             <div className="flex flex-col gap-1">
               <button type="button" onClick={goHome} className={mobileLinkClass}>
                 Home

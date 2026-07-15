@@ -16,6 +16,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { ScrollReveal, StaggerReveal } from './animations/ScrollReveal';
+import { PageSection } from './layout/SectionContainer';
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -56,8 +57,8 @@ function MiniChart({ chartRef }: { chartRef: RefObject<SVGSVGElement | null> }) 
     <svg
       ref={chartRef}
       viewBox={`0 0 ${W} ${H}`}
-      className="w-full"
-      style={{ height: 140 }}
+      className="h-auto w-full max-w-full"
+      style={{ aspectRatio: `${W} / ${H}`, maxHeight: 140 }}
       preserveAspectRatio="none"
     >
       {[0.25, 0.5, 0.75].map((t) => (
@@ -116,7 +117,7 @@ function MobileScreen({
 }) {
   return (
     <div
-      className={`relative w-[148px] overflow-hidden rounded-[28px] border border-blue-500/20 bg-[#0D0D12] shadow-2xl shadow-blue-500/10 sm:w-[168px] ${className}`}
+      className={`relative w-[clamp(96px,28vw,168px)] max-w-full shrink-0 overflow-hidden rounded-[28px] border border-blue-500/20 bg-[#0D0D12] shadow-2xl shadow-blue-500/10 ${className}`}
       style={{ aspectRatio: '9/19' }}
     >
       <div className="flex items-center justify-between px-4 pt-3 pb-1">
@@ -170,12 +171,7 @@ export function DashboardPreview() {
   );
 
   return (
-    <section
-      ref={sectionRef}
-      id="solutions"
-      className="relative overflow-x-clip px-4 py-16 sm:px-6 sm:py-20 md:px-8 md:py-28 lg:px-12"
-    >
-      <div className="mx-auto max-w-7xl">
+    <PageSection id="solutions" sectionRef={sectionRef}>
         <ScrollReveal className="mb-10 max-w-3xl space-y-3 sm:mb-14 sm:space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl md:text-5xl">
             Unified dashboard for complete control
@@ -186,10 +182,10 @@ export function DashboardPreview() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="relative mb-8 overflow-hidden sm:mb-10">
-            <div className="pointer-events-none absolute -inset-12 bg-gradient-to-r from-blue-600/15 via-transparent to-transparent blur-3xl sm:-inset-24" />
+          <div className="relative mb-8 min-w-0 overflow-hidden sm:mb-10">
+            <div className="pointer-events-none absolute -inset-6 bg-gradient-to-r from-blue-600/15 via-transparent to-transparent blur-3xl sm:-inset-12 md:-inset-24" />
 
-            <div className="relative rounded-2xl border border-blue-500/15 bg-gradient-to-br from-blue-950/25 via-[#09090B]/60 to-[#09090B]/80 p-4 backdrop-blur-xl sm:rounded-3xl sm:p-5 md:p-8">
+            <div className="relative min-w-0 rounded-2xl border border-blue-500/15 bg-gradient-to-br from-blue-950/25 via-[#09090B]/60 to-[#09090B]/80 p-4 backdrop-blur-xl sm:rounded-3xl sm:p-5 md:p-8">
               <div className="mb-6 flex flex-col gap-3 border-b border-blue-500/10 pb-5 sm:mb-8 sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:pb-6">
                 <div>
                   <h3 className="mb-1 text-xl font-semibold sm:text-2xl">Network Overview</h3>
@@ -295,8 +291,8 @@ export function DashboardPreview() {
         </ScrollReveal>
 
         <ScrollReveal>
-          <div className="relative overflow-hidden rounded-2xl border border-blue-500/15 bg-gradient-to-br from-blue-950/20 via-[#09090B]/50 to-[#09090B]/70 p-5 backdrop-blur-xl sm:rounded-3xl sm:p-6 md:p-12">
-            <div className="grid grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative min-w-0 overflow-hidden rounded-2xl border border-blue-500/15 bg-gradient-to-br from-blue-950/20 via-[#09090B]/50 to-[#09090B]/70 p-5 backdrop-blur-xl sm:rounded-3xl sm:p-6 md:p-12">
+            <div className="grid min-w-0 grid-cols-1 items-center gap-8 sm:gap-12 lg:grid-cols-2 lg:gap-16">
               <div className="space-y-4 sm:space-y-6">
                 <h3 className="text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl">
                   Seamless charging for every driver
@@ -321,11 +317,11 @@ export function DashboardPreview() {
                 </div>
               </div>
 
-              <div className="-mx-1 flex items-end justify-start gap-3 overflow-x-auto pb-2 sm:mx-0 sm:justify-center sm:gap-4">
-                <MobileScreen className="mb-8 shrink-0">
+              <div className="flex w-full min-w-0 flex-wrap items-end justify-center gap-2 sm:gap-4">
+                <MobileScreen className="mb-4 sm:mb-8">
                   <div className="flex h-full flex-col px-3 pb-3">
                     <div className="mb-2 px-1 text-[9px] font-semibold text-white">Nearby Stations</div>
-                    <div className="relative mb-2 overflow-hidden rounded-xl" style={{ height: '90px' }}>
+                    <div className="relative mb-2 h-[90px] overflow-hidden rounded-xl">
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-950 to-[#0a0a12]" />
                       <div className="absolute left-6 top-3 flex size-4 items-center justify-center rounded-full border-2 border-white bg-blue-500 shadow-lg shadow-blue-500/50">
                         <Zap className="size-2 text-white" fill="white" />
@@ -349,7 +345,7 @@ export function DashboardPreview() {
                   </div>
                 </MobileScreen>
 
-                <MobileScreen className="shrink-0">
+                <MobileScreen>
                   <div className="flex h-full flex-col items-center px-3 pb-4">
                     <div className="mb-3 self-start text-[9px] font-semibold text-white">Charging Session</div>
                     <div className="relative mb-3">
@@ -381,7 +377,7 @@ export function DashboardPreview() {
                   </div>
                 </MobileScreen>
 
-                <MobileScreen className="mb-8 shrink-0">
+                <MobileScreen className="mb-4 sm:mb-8">
                   <div className="flex h-full flex-col px-3 pb-3">
                     <div className="mb-2 px-1 text-[9px] font-semibold text-white">Station Detail</div>
                     <div className="mb-2 rounded-xl border border-blue-500/20 bg-blue-500/10 p-2.5">
@@ -404,7 +400,6 @@ export function DashboardPreview() {
             </div>
           </div>
         </ScrollReveal>
-      </div>
-    </section>
+    </PageSection>
   );
 }

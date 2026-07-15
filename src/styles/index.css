@@ -6,6 +6,8 @@ html {
   scroll-behavior: smooth;
   overflow-x: clip;
   width: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 #root {
@@ -25,16 +27,47 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: clip;
   width: 100%;
-  min-height: 100%;
+  min-height: 100dvh;
+}
+
+/* Responsive section shell — padding respects iPhone safe areas in landscape */
+.section-container {
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+/* Fixed nav clearance + notch */
+.pt-nav {
+  padding-top: calc(4rem + env(safe-area-inset-top, 0px));
+}
+
+@media (min-width: 768px) {
+  .pt-nav {
+    padding-top: calc(4.5rem + env(safe-area-inset-top, 0px));
+  }
 }
 
 section[id] {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: calc(4rem + env(safe-area-inset-top, 0px));
 }
 
 @media (min-width: 768px) {
   section[id] {
-    scroll-margin-top: 5.25rem;
+    scroll-margin-top: calc(4.5rem + env(safe-area-inset-top, 0px));
   }
 }
 
